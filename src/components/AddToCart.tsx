@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: rodchen
  * @Date: 2021-11-06 14:12:00
- * @LastEditTime: 2021-11-06 14:25:18
+ * @LastEditTime: 2021-11-06 14:43:41
  * @LastEditors: rodchen
  */
 import React,  { useContext } from 'react';
@@ -27,4 +27,22 @@ export const withAddToCart = (ChildComponent: React.ComponentType<RobotProps>) =
 
     return <ChildComponent {...props} addToCart={addToCart} />
   }
+}
+
+export const useAddToCart = () => {
+  const setState = useContext(appSetStateContext)
+  const addToCart = (id: number, name: string) => {
+    if (setState) {
+      setState(state => {
+        return {
+          ...state,
+          shoppingCart: {
+            items: [...state.shoppingCart.items, {id, name}]
+          }
+        }
+      })
+    }
+  }
+
+  return addToCart
 }
