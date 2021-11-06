@@ -1,10 +1,29 @@
+/*
+ * @Description: 
+ * @Author: rodchen
+ * @Date: 2021-04-10 13:28:47
+ * @LastEditTime: 2021-11-06 18:26:22
+ * @LastEditors: rodchen
+ */
 import React from "react";
 import styles from "./Header.module.css";
 import logo from "../../assets/logo.svg";
 import { Layout, Typography, Input, Menu, Button, Dropdown } from "antd";
 import { GlobalOutlined } from "@ant-design/icons";
+import { useHistory, useLocation, useParams, useRouteMatch } from "react-router-dom";
 
 export const Header: React.FC = () => {
+  const history = useHistory();
+  const location = useLocation();
+  const params = useParams();
+  const routeMatch = useRouteMatch();
+
+  console.log("history", history)
+  console.log("location", location)
+  console.log("params", params)
+  console.log("routeMatch", routeMatch)
+
+
   return (
     <div className={styles["app-header"]}>
       {/* top-header */}
