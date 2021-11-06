@@ -2,11 +2,12 @@
  * @Description: 
  * @Author: rodchen
  * @Date: 2021-11-05 14:31:13
- * @LastEditTime: 2021-11-05 17:23:05
+ * @LastEditTime: 2021-11-06 13:40:13
  * @LastEditors: rodchen
  */
 import React from 'react';
 import styles from './ShoppingCart.module.css'
+import { appContext } from '../AppState'
 
 interface Props {
 }
@@ -42,22 +43,27 @@ class ShoppingCart extends React.Component<Props, State> {
 
   render () {
     return (
-      <div className={styles.cartContainer}>
-        <button onClick={(e) => {this.handleClick(e)}}>
-          <p>p</p>
-          <span>购物车2（件）</span>
-        </button>
-        <div className={styles.cartDropDown}
-          style={{
-            display: this.state.isOpen ? 'block' : 'none'
-          }}
-        >
-          <ul>
-            <li>1</li>
-            <li>2</li>
-          </ul>
-        </div>
-      </div>
+      <appContext.Consumer>
+        {value => {
+          return (
+            <div className={styles.cartContainer}>
+              <button onClick={(e) => {this.handleClick(e)}}>
+                <p>p</p>
+                <span>购物车{value.shoppingCart.items.length}（件）</span>
+              </button>
+              <div className={styles.cartDropDown}
+                style={{
+                  display: this.state.isOpen ? 'block' : 'none'
+                }}
+              >
+                <ul>
+                  {value.shoppingCart.items.map(item => <li>{item.name}</li>)}
+                </ul>
+              </div>
+            </div>
+          )
+        }}
+      </appContext.Consumer>
     )
   }
 }

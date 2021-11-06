@@ -1,12 +1,23 @@
+/*
+ * @Description: 
+ * @Author: rodchen
+ * @Date: 2021-11-03 15:33:21
+ * @LastEditTime: 2021-11-06 13:27:28
+ * @LastEditors: rodchen
+ */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { AppStateProvuder } from './AppState'
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppStateProvuder>
+      <App userName="rod"  />
+    </AppStateProvuder>
   </React.StrictMode>,
   document.getElementById('root')
 );

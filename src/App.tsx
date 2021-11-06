@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: rodchen
  * @Date: 2021-11-03 15:33:21
- * @LastEditTime: 2021-11-06 13:00:23
+ * @LastEditTime: 2021-11-06 13:03:18
  * @LastEditors: rodchen
  */
 import React, { useState, useEffect } from 'react';
@@ -12,7 +12,7 @@ import Robot from './components/Robot'
 import ShoppingCart from './components/ShoppingCart';
 
 interface Props {
-
+  userName: string
 }
 
 interface States {
@@ -51,6 +51,7 @@ const App : React.FC<Props>  = (props) => {
   return (
     <div className={styles.app}>
       <div className={styles.appHeader}>
+        {props.userName}
         <img src={logo} className={styles.appLogo} alt="logo" />
         <h1>robot 机器人</h1>
       </div>
