@@ -1,75 +1,56 @@
-/*
- * @Description: 
- * @Author: rodchen
- * @Date: 2021-11-03 15:33:21
- * @LastEditTime: 2021-11-06 14:09:50
- * @LastEditors: rodchen
- */
-import React, { useState, useEffect } from 'react';
-import logo from './assets/images/logo.svg';
-import styles from './App.module.css';
-import Robot from './components/Robot'
-import RobotDiscount from './components/RobotDiscount';
-import ShoppingCart from './components/ShoppingCart';
+import React from 'react';
+import styles from "./App.module.css";
+import { Header, Footer, Carousel, SideMenu, ProductCollection, BusinessPartners } from "./components";
+import { Row, Col, Typography } from "antd";
+import { productList1, productList2, productList3 } from "./mockups";
+import sideImage from './assets/images/sider_2019_12-09.png';
+import sideImage2 from './assets/images/sider_2019_02-04.png';
+import sideImage3 from './assets/images/sider_2019_02-04-2.png';
 
-interface Props {
-  userName: string
-}
-
-interface States {
-  robotGallery: any[]
-}
-
-const App : React.FC<Props>  = (props) => {
-  const [count, setCount] = useState<number>(0);
-  const [robotGallery, setRobotGallery] = useState<any>([])
-  const [loading, setLoading] = useState<boolean>(false)
-  const [error, setError] = useState<string>();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true)
-      try {
-        const response = await fetch("https://jsonplaceholder.typicode.com/users")
-        const data = await response.json();
-        setRobotGallery (data) 
-      } catch(err: any) {
-        setError(err.messsage)
-      }
-      setLoading(false)
-    }
-
-    fetchData()
-
-  }, [])
-
-
-
-  useEffect(() => {
-    document.title = `点击${count}`;
-  }, [count])
-  
+function App() {
   return (
     <div className={styles.app}>
-      <div className={styles.appHeader}>
-        {props.userName}
-        <img src={logo} className={styles.appLogo} alt="logo" />
-        <h1>robot 机器人</h1>
+      <Header />
+      {/* 页面内容 content */}
+      <div className={styles["page-content"]}>
+        <Row style={{ marginTop: 20 }}>
+          <Col span={6}>
+            <SideMenu />
+          </Col>
+          <Col span={18}>
+            <Carousel />
+          </Col>
+        </Row>
+        <ProductCollection
+          title={
+            <Typography.Title level={3} type="warning">
+              爆款推荐
+            </Typography.Title>
+          }
+          sideImage={sideImage}
+          products={productList1}
+        />
+        <ProductCollection
+          title={
+            <Typography.Title level={3} type="danger">
+              新品上市
+            </Typography.Title>
+          }
+          sideImage={sideImage2}
+          products={productList2}
+        />
+        <ProductCollection
+          title={
+            <Typography.Title level={3} type="success">
+              国内游推荐
+            </Typography.Title>
+          }
+          sideImage={sideImage3}
+          products={productList3}
+        />
+        <BusinessPartners />
       </div>
-      <button onClick={() => {
-        setCount(count + 1);
-        setCount(count + 1)
-        setCount(count + 1)
-      }}>
-        click
-      </button>
-      <span>{count}</span>
-      <ShoppingCart />
-      {loading ? 'loading' : <div className={styles.robotList}>
-        {robotGallery.map((r: any, index: number )=> {
-          return index % 2 === 0 ? <Robot id={r.id} name={r.name} email={r.email} /> : <RobotDiscount id={r.id} name={r.name} email={r.email} />
-        })}
-      </div>}
+      <Footer />
     </div>
   );
 }
