@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: rodchen
  * @Date: 2021-11-05 14:31:13
- * @LastEditTime: 2021-11-05 15:29:04
+ * @LastEditTime: 2021-11-05 17:23:05
  * @LastEditors: rodchen
  */
 import React from 'react';
@@ -23,7 +23,7 @@ class ShoppingCart extends React.Component<Props, State> {
       isOpen: true
     }
 
-    this.handleClick = this.handleClick.bind(this)
+    // this.handleClick = this.handleClick.bind(this)
   }
 
   handleClick (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -43,7 +43,7 @@ class ShoppingCart extends React.Component<Props, State> {
   render () {
     return (
       <div className={styles.cartContainer}>
-        <button onClick={this.handleClick}>
+        <button onClick={(e) => {this.handleClick(e)}}>
           <p>p</p>
           <span>购物车2（件）</span>
         </button>
