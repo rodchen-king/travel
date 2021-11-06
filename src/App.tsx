@@ -2,13 +2,14 @@
  * @Description: 
  * @Author: rodchen
  * @Date: 2021-11-03 15:33:21
- * @LastEditTime: 2021-11-06 13:03:18
+ * @LastEditTime: 2021-11-06 14:09:50
  * @LastEditors: rodchen
  */
 import React, { useState, useEffect } from 'react';
 import logo from './assets/images/logo.svg';
 import styles from './App.module.css';
 import Robot from './components/Robot'
+import RobotDiscount from './components/RobotDiscount';
 import ShoppingCart from './components/ShoppingCart';
 
 interface Props {
@@ -65,7 +66,9 @@ const App : React.FC<Props>  = (props) => {
       <span>{count}</span>
       <ShoppingCart />
       {loading ? 'loading' : <div className={styles.robotList}>
-        {robotGallery.map((r: any )=> <Robot id={r.id} name={r.name} email={r.email} />)}
+        {robotGallery.map((r: any, index: number )=> {
+          return index % 2 === 0 ? <Robot id={r.id} name={r.name} email={r.email} /> : <RobotDiscount id={r.id} name={r.name} email={r.email} />
+        })}
       </div>}
     </div>
   );
