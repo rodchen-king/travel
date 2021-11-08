@@ -1,15 +1,13 @@
 /*
  * @Description: 
  * @Author: rodchen
- * @Date: 2021-11-07 15:54:49
- * @LastEditTime: 2021-11-07 16:01:09
+ * @Date: 2021-04-10 13:13:24
+ * @LastEditTime: 2021-11-08 11:45:50
  * @LastEditors: rodchen
  */
-import { createStore } from "redux";
-import languageReducer from "./languageReducer";
-
+import { createStore } from 'redux';
+import languageReducer from "./language/languageReducer";
 
 const store = createStore(languageReducer);
-
 
 export default store;
