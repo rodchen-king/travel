@@ -16,7 +16,7 @@ interface AddLanguageAction {
 
 export type LanguageActionTypes = ChangeLanguageAction | AddLanguageAction;
 
-export const changeLanguageCreator = (
+export const changeLanguageActionCreator = (
   languageCode: "zh" | 'en'
 ) : ChangeLanguageAction => {
   return {
