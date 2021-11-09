@@ -6,12 +6,9 @@ import { GlobalOutlined } from "@ant-design/icons";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import store, { RootState } from "../../redux/store";
-import { LanguageState } from "../../redux/language/languageReducer";
+import { RootState } from "../../redux/store";
 import { withTranslation, WithTranslation } from "react-i18next";
 import { changeLanguageActionCreator, addLanguageActionCreator } from "../../redux/language/languageActions";
-
-interface State extends LanguageState {}
 
 const mapStateToProps = (state: RootState) => {
   return {

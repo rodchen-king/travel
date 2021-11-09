@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: rodchen
+ * @Date: 2021-04-10 13:30:01
+ * @LastEditTime: 2021-11-09 14:05:20
+ * @LastEditors: rodchen
+ */
 import React from "react";
 import { Image, Typography } from "antd";
 import { withRouter, RouteComponentProps, Link } from "react-router-dom";
@@ -25,7 +32,7 @@ const ProductImageComponent: React.FC<PropsType> = ({
   // console.log(match)
   return (
     <Link to={`detail/${id}`}>
-      {size == "large" ? (
+      {size === "large" ? (
         <Image src={imageSrc} height={285} width={490} />
       ) : (
         <Image src={imageSrc} height={120} width={240} />
