@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: rodchen
  * @Date: 2021-04-10 13:13:23
- * @LastEditTime: 2021-11-08 14:01:04
+ * @LastEditTime: 2021-11-09 09:15:23
  * @LastEditors: rodchen
  */
 import i18n from "i18next";
@@ -21,7 +21,7 @@ const defaultState: LanguageState = {
   ],
 };
 
-export default (state = defaultState, action: LanguageActionTypes) => {
+ const reducer =  (state = defaultState, action: LanguageActionTypes) => {
   switch (action.type) {
     case CHANGE_LANGUAGE:
       i18n.changeLanguage(action.payload); // 这样处理是不标准的，有副作用
@@ -38,3 +38,5 @@ export default (state = defaultState, action: LanguageActionTypes) => {
       return state;
   }
 };
+
+export default reducer;

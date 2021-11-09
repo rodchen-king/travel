@@ -51,8 +51,6 @@ class HeaderComponnet extends React.Component<
   render() {
     const { history, t } = this.props;
 
-    debugger
-
     return (
       <div className={styles["app-header"]}>
         {/* top-header */}

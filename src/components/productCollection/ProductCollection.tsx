@@ -10,6 +10,7 @@ interface PropsType {
 }
 
 export const ProductCollection: React.FC<PropsType> = ({title, sideImage, products}) => {
+  debugger
     return (
       <div className={styles.content}>
         <Divider orientation="left">{title}</Divider>
